@@ -1,0 +1,17 @@
+services:
+  ledgerlock:
+    build: .
+    container_name: ledgerlock-ctf
+    restart: unless-stopped
+    ports:
+      - "127.0.0.1:5000:5000"
+    environment:
+      DATABASE_PATH: /data/ledgerlock.db
+      PORT: "5000"
+      # Optional: set FLAG in your shell before first startup to choose a flag.
+      # FLAG: "flag{your_custom_flag_here}"
+    volumes:
+      - ledgerlock-data:/data
+
+volumes:
+  ledgerlock-data:
